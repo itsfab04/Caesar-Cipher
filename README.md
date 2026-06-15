@@ -16,7 +16,7 @@
 
 ## Overview
 
-This project reimagines the classical Caesar Cipher as an immersive web experience. The visual design draws inspiration from [CTRL/Shift](https://www.ctrlshift.events) — a floating-column layout with dark panels, gold accents, and Pompeian red — while placing a faithful animated reproduction of the historical cryptographic disc at the center of the interface.
+This project reimagines the classical Caesar Cipher as an immersive web experience. The visual design draws inspiration from [CTRL/Shift](https://www.ctrlshift.events), while placing a faithful animated reproduction of the historical cryptographic disc at the center of the interface.
 
 The cryptographic wheel rotates in real time as the user adjusts the shift key, and every letter typed in the plaintext is momentarily highlighted on the outer ring, creating a tangible connection between the digital tool and the physical object it represents.
 
@@ -149,5 +149,5 @@ The floating-panel layout is inspired by the visual language of [CTRL/Shift 2026
 
 ---
 
-*Built by [Fabrizio Centrella](https://github.com/itsfab04)*
+*Built by [Fabrizio Centrella](https://linktr.ee/itsfab_)*
 
