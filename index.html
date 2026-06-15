@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>Caesar Cipher — Interactive Cryptographic Wheel</title>
+  <meta name="description" content="An interactive Caesar Cipher web app featuring an animated historical cryptographic wheel, real-time encryption, and multilingual brute-force analysis." />
+  <meta name="author" content="Fabrizio Centrella" />
+  <meta name="keywords" content="caesar cipher, cryptography, encryption, decryption, brute force, historical wheel, roman, interactive, javascript" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://itsfab04.github.io/caesar-cipher/" />
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://itsfab04.github.io/caesar-cipher/" />
+  <meta property="og:site_name" content="Caesar Cipher" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Caesar Cipher — Interactive Cryptographic Wheel" />
+  <meta property="og:description" content="Real-time Caesar cipher with animated historical wheel, Roman aesthetic, and multilingual brute-force analysis. Built by Fabrizio Centrella." />
+  <meta property="og:image" content="https://itsfab04.github.io/caesar-cipher/assets/og-preview.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Caesar Cipher — Interactive Cryptographic Wheel" />
+  <meta name="twitter:description" content="Real-time Caesar cipher with animated historical wheel, Roman aesthetic, and multilingual brute-force analysis." />
+  <meta name="twitter:creator" content="@itsfab_" />
+  <meta name="twitter:image" content="https://itsfab04.github.io/caesar-cipher/assets/og-preview.png" />
+
+  <!-- Mobile / PWA -->
+  <meta name="theme-color" content="#0b0c11" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+
+  <!-- Structured Data (schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Caesar Cipher — Interactive Cryptographic Wheel",
+    "url": "https://itsfab04.github.io/caesar-cipher/",
+    "description": "An interactive Caesar Cipher web app featuring an animated historical cryptographic wheel, real-time encryption, and multilingual brute-force analysis.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern browser with JavaScript and Canvas API support",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "name": "Fabrizio Centrella",
+      "url": "https://linktr.ee/itsfab_"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Real-time Caesar cipher encryption and decryption",
+      "Animated historical cryptographic wheel",
+      "Multilingual brute-force analysis across all 25 keys",
+      "Live letter highlighting on outer ring",
+      "Copy to clipboard"
+    ],
+    "keywords": "caesar cipher, cryptography, encryption, historical, brute force, interactive, roman"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Assets -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="bg-roman-red"></div>
+  <div class="bg-vignette"></div>
+
+  <svg class="deco-laurel deco-laurel-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 700" aria-hidden="true">
+    <line x1="42" y1="0" x2="42" y2="700" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <g fill="#c9a84c">
+      <path d="M42,40  C37,22 14,16  3,28  C14,36 36,48 42,40 Z"/>
+      <path d="M42,62  C47,44 70,38 79,50  C68,58 44,70 42,62 Z"/>
+      <path d="M42,110 C37,92 14,86  3,98  C14,106 36,118 42,110Z"/>
+      <path d="M42,132 C47,114 70,108 79,120 C68,128 44,140 42,132Z"/>
+      <path d="M42,180 C37,162 14,156  3,168 C14,176 36,188 42,180Z"/>
+      <path d="M42,202 C47,184 70,178 79,190 C68,198 44,210 42,202Z"/>
+      <path d="M42,250 C37,232 14,226  3,238 C14,246 36,258 42,250Z"/>
+      <path d="M42,272 C47,254 70,248 79,260 C68,268 44,280 42,272Z"/>
+      <path d="M42,320 C37,302 14,296  3,308 C14,316 36,328 42,320Z"/>
+      <path d="M42,342 C47,324 70,318 79,330 C68,338 44,350 42,342Z"/>
+      <path d="M42,390 C37,372 14,366  3,378 C14,386 36,398 42,390Z"/>
+      <path d="M42,412 C47,394 70,388 79,400 C68,408 44,420 42,412Z"/>
+      <path d="M42,460 C37,442 14,436  3,448 C14,456 36,468 42,460Z"/>
+      <path d="M42,482 C47,464 70,458 79,470 C68,478 44,490 42,482Z"/>
+      <path d="M42,530 C37,512 14,506  3,518 C14,526 36,538 42,530Z"/>
+      <path d="M42,552 C47,534 70,528 79,540 C68,548 44,560 42,552Z"/>
+      <path d="M42,600 C37,582 14,576  3,588 C14,596 36,608 42,600Z"/>
+      <path d="M42,622 C47,604 70,598 79,610 C68,618 44,630 42,622Z"/>
+      <path d="M42,668 C37,650 14,644  3,656 C14,664 36,676 42,668Z"/>
+      <path d="M42,690 C47,672 70,666 79,678 C68,686 44,698 42,690Z"/>
+    </g>
+  </svg>
+
+  <svg class="deco-laurel deco-laurel-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 700" aria-hidden="true">
+    <line x1="42" y1="0" x2="42" y2="700" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <g fill="#c9a84c">
+      <path d="M42,40  C37,22 14,16  3,28  C14,36 36,48 42,40 Z"/>
+      <path d="M42,62  C47,44 70,38 79,50  C68,58 44,70 42,62 Z"/>
+      <path d="M42,110 C37,92 14,86  3,98  C14,106 36,118 42,110Z"/>
+      <path d="M42,132 C47,114 70,108 79,120 C68,128 44,140 42,132Z"/>
+      <path d="M42,180 C37,162 14,156  3,168 C14,176 36,188 42,180Z"/>
+      <path d="M42,202 C47,184 70,178 79,190 C68,198 44,210 42,202Z"/>
+      <path d="M42,250 C37,232 14,226  3,238 C14,246 36,258 42,250Z"/>
+      <path d="M42,272 C47,254 70,248 79,260 C68,268 44,280 42,272Z"/>
+      <path d="M42,320 C37,302 14,296  3,308 C14,316 36,328 42,320Z"/>
+      <path d="M42,342 C47,324 70,318 79,330 C68,338 44,350 42,342Z"/>
+      <path d="M42,390 C37,372 14,366  3,378 C14,386 36,398 42,390Z"/>
+      <path d="M42,412 C47,394 70,388 79,400 C68,408 44,420 42,412Z"/>
+      <path d="M42,460 C37,442 14,436  3,448 C14,456 36,468 42,460Z"/>
+      <path d="M42,482 C47,464 70,458 79,470 C68,478 44,490 42,482Z"/>
+      <path d="M42,530 C37,512 14,506  3,518 C14,526 36,538 42,530Z"/>
+      <path d="M42,552 C47,534 70,528 79,540 C68,548 44,560 42,552Z"/>
+      <path d="M42,600 C37,582 14,576  3,588 C14,596 36,608 42,600Z"/>
+      <path d="M42,622 C47,604 70,598 79,610 C68,618 44,630 42,622Z"/>
+      <path d="M42,668 C37,650 14,644  3,656 C14,664 36,676 42,668Z"/>
+      <path d="M42,690 C47,672 70,666 79,678 C68,686 44,698 42,690Z"/>
+    </g>
+  </svg>
+
+  <header class="site-header">
+    <span class="header-label"></span>
+    <span class="header-divider">✦</span>
+    <h1 class="header-title">CAESAR CIPHER</h1>
+    <span class="header-divider">✦</span>
+    <span class="header-label"></span>
+  </header>
+
+  <main class="layout">
+
+    <!-- LEFT COLUMN: input -->
+    <section class="panel panel-left float-anim" id="panel-left">
+      <div class="panel-header">
+        <span class="panel-icon">◈</span>
+        <h2 class="panel-title">PLAINTEXT</h2>
+        <span class="panel-icon">◈</span>
+      </div>
+      <div class="panel-body">
+        <textarea
+          id="plaintext"
+          class="text-area"
+          placeholder="Write your message here…"
+          spellcheck="false"
+          autocomplete="off"
+        ></textarea>
+      </div>
+      <div class="panel-footer">
+        <span class="char-count" id="plain-count">0 characters</span>
+        <span class="mode-badge" id="mode-badge">ENCRYPTION</span>
+      </div>
+    </section>
+
+    <!-- CENTER COLUMN: wheel -->
+    <section class="wheel-column">
+
+      <div class="wheel-wrapper float-anim-slow">
+
+        <div class="wheel-container" id="wheel-container">
+
+          <!-- FIXED OUTER RING -->
+          <div class="wheel-ring wheel-outer" id="wheel-outer">
+            <div class="ring-texture"></div>
+            <div class="ring-border-outer"></div>
+            <canvas id="canvas-outer" class="ring-canvas"></canvas>
+            <div class="ring-decorative-outer"></div>
+          </div>
+
+          <!-- ROTATING INNER WHEEL -->
+          <div class="wheel-ring wheel-inner" id="wheel-inner">
+            <div class="ring-texture ring-texture-inner"></div>
+            <canvas id="canvas-inner" class="ring-canvas"></canvas>
+            <div class="wheel-center-decoration">
+              <div class="center-text-block">
+                <span class="center-initials">CAESAR</span>
+                <span class="center-subtitle">CIPHER</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CENTER PIN -->
+          <div class="wheel-pin">
+            <div class="pin-inner"></div>
+            <div class="pin-shine"></div>
+          </div>
+
+          <!-- ALIGNMENT INDICATOR -->
+          <div class="alignment-marker"></div>
+
+        </div><!-- /wheel-container -->
+
+      </div><!-- /wheel-wrapper -->
+
+      <!-- CONTROLS BELOW THE WHEEL -->
+      <div class="controls-block float-anim">
+
+        <div class="mode-toggle">
+          <button class="toggle-btn active" id="btn-encrypt" data-mode="encrypt">ENCRYPT</button>
+          <button class="toggle-btn" id="btn-decrypt" data-mode="decrypt">DECRYPT</button>
+        </div>
+
+        <div class="slider-block">
+          <div class="slider-labels">
+            <span>I</span>
+            <span>ROTATION KEY</span>
+            <span>XX</span>
+          </div>
+          <div class="slider-track-wrap">
+            <input
+              type="range"
+              id="key-slider"
+              class="key-slider"
+              min="1"
+              max="25"
+              value="3"
+            />
+            <div class="slider-fill" id="slider-fill"></div>
+          </div>
+          <div class="key-display">
+            <span class="key-value-label">SHIFT</span>
+            <span class="key-value" id="key-value">+3</span>
+          </div>
+        </div>
+
+        <div class="brute-btn-wrap">
+          <button class="brute-btn" id="brute-btn">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            BRUTE FORCE
+          </button>
+        </div>
+
+      </div><!-- /controls-block -->
+
+    </section><!-- /wheel-column -->
+
+    <!-- RIGHT COLUMN: output -->
+    <section class="panel panel-right float-anim" id="panel-right">
+      <div class="panel-header">
+        <span class="panel-icon">◈</span>
+        <h2 class="panel-title">CIPHERTEXT</h2>
+        <span class="panel-icon">◈</span>
+      </div>
+      <div class="panel-body">
+        <textarea
+          id="ciphertext"
+          class="text-area text-area-output"
+          placeholder="Ciphertext will appear here…"
+          readonly
+          spellcheck="false"
+        ></textarea>
+      </div>
+      <div class="panel-footer">
+        <span class="char-count" id="cipher-count">0 characters</span>
+        <button class="copy-btn" id="copy-btn" title="Copy to clipboard">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+          COPY
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BRUTE FORCE RESULTS SECTION -->
+  <section class="brute-section" id="brute-section" hidden>
+    <div class="brute-panel">
+
+      <div class="brute-header">
+        <div class="brute-header-left">
+          <span class="panel-icon">◈</span>
+          <h2 class="brute-title">BRUTE FORCE ANALYSIS</h2>
+          <span class="brute-hint">— click a row to apply the key</span>
+        </div>
+        <div class="brute-header-right">
+          <span class="brute-count" id="brute-count">25 KEYS</span>
+          <button class="brute-close" id="brute-close" title="Close">✕</button>
+        </div>
+      </div>
+
+      <div class="brute-col-labels">
+        <span>SHIFT</span>
+        <span>DECRYPTED TEXT</span>
+      </div>
+
+      <div class="brute-results" id="brute-results"></div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <span>· Made by <a href="https://linktr.ee/itsfab_" target="_blank" rel="noopener noreferrer" class="footer-link">FABRIZIO CENTRELLA</a> ·</span>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
